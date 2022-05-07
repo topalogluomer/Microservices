@@ -1,0 +1,58 @@
+version: '3.1'
+
+services:
+  s_api_gateway:
+
+     container_name: c_api_gateway
+     image: omerberktopaloglu/apigateway
+     build:
+       context: .
+       dockerfile: APIGateway/Dockerfile
+       
+     ports:
+       - 80:80
+
+     networks: 
+      - micro_net  #dýþardan alabilmek icin
+      - int_net    #iç networkten
+
+  
+
+  s_contact_api: 
+     
+    container_name: c_contact_api
+    image: omerberktopaloglu/contactapi
+    build:
+     context: .
+     dockerfile: Services/ContactAPI/Conctact.API/Dockerfile
+    
+    ports:
+      - 7001:7001
+    networks:
+      - int_net
+
+  s_reservation_api:
+    
+    container_name: :c_reservation_api
+    image: omerberktopaloglu/reservationapi
+    build:
+     context: .
+     dockerfile: Services/RestAPI/Reservation.API/Dockerfile
+
+    ports:
+     - 7000:7000
+
+    networks:
+       - int_net
+  
+
+
+
+networks:
+  int_net:
+   driver: overlay
+   internal: true
+  micro_net:
+   driver: bridge
+
+       

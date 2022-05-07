@@ -7,8 +7,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44370
+          "Host": "c_reservation_api",
+          "Port": 7000
 
         }
       ],
@@ -21,8 +21,8 @@
       "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": 44390
+          "Host": "c_contact_api",
+          "Port": 7001
         }
       ],
       "UpstreamPathTemplate": "/contact/{id}",
